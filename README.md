@@ -1,8 +1,3 @@
-## DEVELOPMENT IS ON HOLD INDEFINITELY (russian invasion of my country)
-------------------------------
-------------------------------
-------------------------------
-
 qimgv | Current version: 1.0.2
 =====
 Image viewer. Fast, easy to use. Optional video support.

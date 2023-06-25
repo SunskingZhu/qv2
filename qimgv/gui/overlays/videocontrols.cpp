@@ -102,9 +102,10 @@ void VideoControls::onVideoMuted(bool mode) {
 void VideoControls::mouseMoveEvent(QMouseEvent *event) {
     QWidget::mouseMoveEvent(event);
     QRect r = ui->muteButton->frameGeometry();
-    r.setWidth(r.width() + ui->volumeBar->width() + ui->muteSpacer->sizeHint().width() + ui->volumeSpacer->sizeHint().width() + 5);
-    qDebug() << ui->volumeBar->width() << ui->muteSpacer->sizeHint().width() << ui->volumeSpacer->sizeHint().width();
-    qDebug() << event->pos() << r;
+    if (ui->volumeBar->isVisible())
+        r.setWidth(r.width() + ui->volumeBar->width() + ui->muteSpacer->sizeHint().width() + ui->volumeSpacer->sizeHint().width() + 5);
+//    qDebug() << ui->volumeBar->width() << ui->muteSpacer->sizeHint().width() << ui->volumeSpacer->sizeHint().width();
+//    qDebug() << event->pos() << r;
     if (r.contains(event->pos()))
         ui->volumeBar->show();
     else

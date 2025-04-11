@@ -37,9 +37,31 @@ mkdir $PACKAGE_DIR/platforms
 cp platforms/qwindows.dll $PACKAGE_DIR/platforms
 
 # 3 - copy dep dlls + mpv.exe
+
+# 3.1 - optionally extract deps
+if [[ "$1" == "-d" ]]; then
+  # TODO: test
+  echo "Extracting deps..."
+  depends.exe /oc $SCRIPTS_DIR/dep.txt $BUILD_DIR/qimgv/qimgv.exe
+  depends.exe /oc $SCRIPTS_DIR/dep_mpv.txt $MSYS_DIR/bin/mpv.exe
+  until [ -f "$SCRIPTS_DIR/dep_mpv.txt" ] && [ -f "$SCRIPTS_DIR/dep.txt" ]; do
+      sleep 1
+  done
+  echo "Extraction done."
+else
+  echo "Skipping deps extraction."
+fi
+
+# the mpv dll is loaded dynamically, so its deps can’t be automatically extracted from the qimgv binary
+
+BIN_PATH=$(echo "$MSYS_DIR/bin" | sed 's/\//\\\\/g')
+DEPS=$(rg "${BIN_PATH}\\\\\\K(.*\\.dll)" $SCRIPTS_DIR/dep.txt -ioP | awk '{print tolower($0)}' | sed 's/\n/ /')
+DEPS_MPV=$(rg "${BIN_PATH}\\\\\\K(.*\\.dll)" $SCRIPTS_DIR/dep_mpv.txt -ioP | awk '{print tolower($0)}' | sed 's/\n/ /')
 MSYS_DLLS=$(cat $SCRIPTS_DIR/msys2-dll-deps.txt | sed 's/\n/ /')
 cd $MSYS_DIR/bin
 cp $MSYS_DLLS $PACKAGE_DIR
+cp $DEPS $PACKAGE_DIR
+cp $DEPS_MPV $PACKAGE_DIR
 
 # 4 - copy imageformats
 cp $EXT_DIR/qt-jpegxl-image-plugin/build/bin/imageformats/libqjpegxl*.dll $PACKAGE_DIR/imageformats

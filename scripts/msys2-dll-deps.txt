@@ -1,10 +1,10 @@
 libLerc.dll
 libaom.dll
-libavif.dll
+libavif*.dll
 libbrotlicommon.dll
 libbrotlidec.dll
 libbrotlienc.dll
-libcrypto-1_1-x64.dll
+libcrypto-*-x64.dll
 libcurl-*.dll
 libdav1d.dll
 libde265-*.dll
@@ -34,7 +34,7 @@ libpng*.dll
 libpsl-*.dll
 libraw-*.dll
 libssh2-1.dll
-libssl-1_1-x64.dll
+libssl-*-x64.dll
 libstdc++-*.dll
 libtiff-*.dll
 libunistring-*.dll

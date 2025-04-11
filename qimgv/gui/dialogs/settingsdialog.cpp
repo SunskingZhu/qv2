@@ -217,6 +217,7 @@ void SettingsDialog::readSettings() {
     ui->zoomLevels->setText(settings->zoomLevels());
 
     ui->splitViewCheckBox->setChecked(settings->splitView());
+    ui->doubleClickFullscreenCheckBox->setChecked(settings->doubleClickFullscreen());
 
     if(settings->defaultViewMode() == MODE_FOLDERVIEW)
         ui->startInFolderViewCheckBox->setChecked(true);
@@ -368,6 +369,7 @@ void SettingsDialog::saveSettings() {
     settings->setZoomLevels(ui->zoomLevels->text());
 
     settings->setSplitView(ui->splitViewCheckBox->isChecked());
+    settings->setDoubleClickFullscreen(ui->doubleClickFullscreenCheckBox->isChecked());
 
     settings->setPanelPinned(ui->pinPanelCheckBox->isChecked());
     int panelPos = ui->panelPositionComboBox->currentIndex();

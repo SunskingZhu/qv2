@@ -1161,3 +1161,12 @@ bool Settings::splitView() {
 void Settings::setSplitView(bool mode) {
     settings->settingsConf->setValue("splitView", mode);
 }
+//------------------------------------------------------------------------------
+bool Settings::doubleClickFullscreen() {
+    return settings->settingsConf->value("doubleClickFullscreen", true).toBool();
+}
+
+void Settings::setDoubleClickFullscreen(bool mode) {
+    settings->settingsConf->setValue("doubleClickFullscreen", mode);
+}
+//------------------------------------------------------------------------------

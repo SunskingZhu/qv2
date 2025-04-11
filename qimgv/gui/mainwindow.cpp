@@ -422,9 +422,12 @@ void MW::mouseReleaseEvent(QMouseEvent *event) {
 
 void MW::mouseDoubleClickEvent(QMouseEvent *event) {
     event->accept();
-    QMouseEvent *fakePressEvent = new QMouseEvent(QEvent::MouseButtonPress, event->pos(), event->button(), event->buttons(), event->modifiers());
-    actionManager->processEvent(fakePressEvent);
-    actionManager->processEvent(event);
+
+    if (settings->doubleClickFullscreen()) {
+        QMouseEvent *fakePressEvent = new QMouseEvent(QEvent::MouseButtonPress, event->pos(), event->button(), event->buttons(), event->modifiers());
+        actionManager->processEvent(fakePressEvent);
+        actionManager->processEvent(event);
+    }
 }
 
 void MW::close() {

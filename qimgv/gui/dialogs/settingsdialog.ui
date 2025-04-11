@@ -481,6 +481,13 @@
                       </property>
                      </widget>
                     </item>
+                    <item>
+                     <widget class="QCheckBox" name="doubleClickFullscreenCheckBox">
+                      <property name="text">
+                       <string>Enable fullscreen toggle on double-click</string>
+                      </property>
+                     </widget>
+                    </item>
                    </layout>
                   </item>
                  </layout>

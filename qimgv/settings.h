@@ -272,6 +272,10 @@ public:
 
     bool jxlAnimation();
     void setJxlAnimation(bool mode);
+
+    bool doubleClickFullscreen();
+    void setDoubleClickFullscreen(bool mode);
+
     bool absoluteZoomStep();
     void setAbsoluteZoomStep(bool mode);
     bool autoResizeWindow();

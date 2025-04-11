@@ -21,6 +21,8 @@ public:
     void hide();
     bool underMouse();
     bool isVisible();
+    // Get the actual geometry of the video controls in the parent widget's coordinate system
+    QRect geometry() const;
 
 signals:
     void seek(int pos);

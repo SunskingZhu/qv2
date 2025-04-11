@@ -383,6 +383,15 @@ void ViewerWidget::mousePressEvent(QMouseEvent *event) {
 void ViewerWidget::mouseReleaseEvent(QMouseEvent *event) {
     showCursor();
     hideCursorTimed(false);
+    
+    // Handle left-click to pause/resume video playback
+    if (event->button() == Qt::LeftButton && currentWidget == VIDEOPLAYER) {
+        // Only ignore clicks directly on the video controls
+        if (!videoControls->isVisible() || !videoControls->geometry().contains(event->pos())) {
+            pauseResumePlayback();
+        }
+    }
+    
     event->ignore();
 }
 

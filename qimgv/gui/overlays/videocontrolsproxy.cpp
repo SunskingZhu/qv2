@@ -85,3 +85,11 @@ bool VideoControlsProxyWrapper::underMouse() {
 bool VideoControlsProxyWrapper::isVisible() {
     return videoControls ? videoControls->isVisible() : false;
 }
+
+QRect VideoControlsProxyWrapper::geometry() const {
+    if (videoControls && videoControls->isVisible()) {
+        // Return the geometry of the controls in the parent's coordinate system
+        return videoControls->geometry();
+    }
+    return QRect(); // Return an empty rectangle if controls aren't initialized or visible
+}

@@ -17,7 +17,7 @@ release/
 *.user
 ui_settingsdialog.h
 Makefile
-_external
+qimgv/_external/**
 .idea/
 .vscode/
 cmake-build-debug-mingw
